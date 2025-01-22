@@ -24,6 +24,8 @@ const card = (img, name, number, description) => {
   const descripcion = document.createElement("p");
   descripcion.classList.add("cards_description");
 
+  const fragment = document.createDocumentFragment();
+
   image.src = img;
   title.textContent = name;
   numero.textContent = number;
@@ -35,11 +37,11 @@ const card = (img, name, number, description) => {
   div.appendChild(descripcion);
   card.appendChild(figure);
   card.appendChild(div);
-  mainContainer.appendChild(card);
+  fragment.appendChild(card);
+  mainContainer.appendChild(fragment);
 };
 
 const getData = async () => {
-
   try {
     const response = await fetch(
       `https://pokeapi.co/api/v2/pokemon/?limit=20&offset=${offset}`
@@ -51,7 +53,7 @@ const getData = async () => {
 
     const data = await response.json();
 
-    offset = offset + 20
+    offset = offset + 20;
 
     return data;
   } catch (error) {
@@ -70,12 +72,12 @@ const getPokemon = async () => {
       const species = await fetch(pokemonJson.species.url);
       const speciesJson = await species.json();
 
-      const numero = await pokemonJson.id;
-      const name = await pokemonJson.name;
+      const numero = pokemonJson.id;
+      const name = pokemonJson.name;
       const image = pokemonJson.sprites.front_default;
 
-      const entries = await speciesJson.flavor_text_entries;
-      const descripcion = await entries.find(
+      const entries = speciesJson.flavor_text_entries;
+      const descripcion = entries.find(
         (entry) => entry.language.name === "es"
       ).flavor_text;
 
