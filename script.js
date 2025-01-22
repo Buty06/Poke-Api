@@ -102,7 +102,7 @@ const getPokemon = async () => {
         card(image, name, numero, descripcion);
       }
 
-      repeat = pokemonJson.id;
+      repeat = pokemonJson.id; 
     }
   } catch (error) {
     console.error(error);
