@@ -1,4 +1,5 @@
 const mainContainer = document.getElementById("main_container");
+let offset = 0;
 
 const card = (img, name, number, description) => {
   const card = document.createElement("article");
@@ -38,7 +39,6 @@ const card = (img, name, number, description) => {
 };
 
 const getData = async () => {
-  let offset = 0;
 
   try {
     const response = await fetch(
@@ -50,6 +50,9 @@ const getData = async () => {
     }
 
     const data = await response.json();
+
+    offset = offset + 20
+
     return data;
   } catch (error) {
     console.error(error);
@@ -84,3 +87,13 @@ const getPokemon = async () => {
 };
 
 getPokemon();
+
+console.log();
+
+window.addEventListener("scroll", () => {
+  const totalHeight = document.documentElement.scrollHeight;
+  if (scrollY + innerHeight >= totalHeight) {
+    getData();
+    getPokemon();
+  }
+});
