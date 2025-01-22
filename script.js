@@ -1,7 +1,10 @@
+//*Variables del Dom y un contador necesario para el codigo
 const mainContainer = document.getElementById("main_container");
 let offset = 0;
 
+//*Funcion donde se renderizan los pokemones
 const card = (img, name, number, description) => {
+  //?Creando los elementos y agregandoles sus clases respectivas del Dom
   const card = document.createElement("article");
   card.classList.add("cards");
 
@@ -24,13 +27,16 @@ const card = (img, name, number, description) => {
   const descripcion = document.createElement("p");
   descripcion.classList.add("cards_description");
 
+  //?Creando el Fragment que ayuda a la renderizacion de elementos
   const fragment = document.createDocumentFragment();
 
+  //?Agregando los datos de la api a los elementos
   image.src = img;
   title.textContent = name;
   numero.textContent = number;
   descripcion.textContent = description;
 
+  //?Agregando los elementos a el Dom
   title.appendChild(numero);
   figure.appendChild(image);
   div.appendChild(title);
@@ -41,6 +47,7 @@ const card = (img, name, number, description) => {
   mainContainer.appendChild(fragment);
 };
 
+//*obtiene los datos de la ruta de 20 pokemones de la api
 const getData = async () => {
   try {
     const response = await fetch(
@@ -53,6 +60,7 @@ const getData = async () => {
 
     const data = await response.json();
 
+    //?Contador que va sumandose cada vez que se ejecuta
     offset = offset + 20;
 
     return data;
@@ -61,28 +69,41 @@ const getData = async () => {
   }
 };
 
+//*Obtiene los datos para luego ser renderizados utilizando los pokemones anteriores
+
+//*Variable para que no se repitan los valores
+let repeat;
+
 const getPokemon = async () => {
   try {
     const data = await getData();
 
-    data.results.forEach(async (element) => {
+    for (const element of data.results) {
+      //?Se obbtiene el pokemon en especifico
       const pokemon = await fetch(element.url);
       const pokemonJson = await pokemon.json();
 
-      const species = await fetch(pokemonJson.species.url);
-      const speciesJson = await species.json();
+      if (repeat !== pokemonJson.id) {
+        //?Se obtienen los diferentes valores de los pokemones
+        const numero = pokemonJson.id;
+        const name = pokemonJson.name;
+        const image = pokemonJson.sprites.front_default;
 
-      const numero = pokemonJson.id;
-      const name = pokemonJson.name;
-      const image = pokemonJson.sprites.front_default;
+        //?Se obtiene la descripcion de la especie del pokemon
+        const species = await fetch(pokemonJson.species.url);
+        const speciesJson = await species.json();
 
-      const entries = speciesJson.flavor_text_entries;
-      const descripcion = entries.find(
-        (entry) => entry.language.name === "es"
-      ).flavor_text;
+        //?se obtiene la descripcion de los pokemones
+        const entries = speciesJson.flavor_text_entries;
+        const descripcion = entries.find(
+          (entry) => entry.language.name === "es"
+        ).flavor_text;
 
-      card(image, name, numero, descripcion);
-    });
+        card(image, name, numero, descripcion);
+      }
+
+      repeat = pokemonJson.id;
+    }
   } catch (error) {
     console.error(error);
   }
