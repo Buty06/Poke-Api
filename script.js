@@ -115,10 +115,8 @@ console.log();
 
 window.addEventListener("scroll", () => {
   const totalHeight = document.documentElement.scrollHeight;
-  if (scrollY + innerHeight >= totalHeight - 300) {
+  if (scrollY + innerHeight >= totalHeight) {
     getData();
     getPokemon();
-    console.log('hola');
-    
   }
 });
