@@ -35,6 +35,8 @@ body {
   grid-template-rows: 3rem 1fr;
   padding: 0 3rem 3rem 3rem;
   gap: 2rem;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .search {
@@ -77,14 +79,18 @@ body {
 
 .main_container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
   grid-auto-rows: 1fr;
+  place-items: center;
   gap: 2rem;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .cards {
   display: grid;
   grid-template-rows: 20rem 1fr;
+  place-items: center;
   background-color: rgb(8, 47, 63);
   padding: 1rem;
   gap: 1rem;

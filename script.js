@@ -102,7 +102,7 @@ const getPokemon = async () => {
         card(image, name, numero, descripcion);
       }
 
-      repeat = pokemonJson.id; 
+      repeat = pokemonJson.id;
     }
   } catch (error) {
     console.error(error);
@@ -111,12 +111,24 @@ const getPokemon = async () => {
 
 getPokemon();
 
-console.log();
+//*Variable de estado para la ejecucion de la funcion en intervalos de tiempo
+let canExecute = true;
 
-window.addEventListener("scroll", () => {
-  const totalHeight = document.documentElement.scrollHeight;
-  if (scrollY + innerHeight >= totalHeight) {
-    getData();
-    getPokemon();
+//! Esta funsion ayuda para que le de un margen de tiempo a la extraccion de datos en el Dom
+const render = () => {
+  if (canExecute) {
+    const totalHeight = document.documentElement.scrollHeight;
+    if (scrollY + innerHeight >= totalHeight) {
+      getData();
+      getPokemon();
+
+      canExecute = false;
+    }
+
+    setTimeout(() => {
+      canExecute = true;
+    }, 2500);
   }
-});
+};
+
+window.addEventListener("scroll", render);
