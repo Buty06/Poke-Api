@@ -97,3 +97,26 @@ body {
   width: 100%;
   height: 100%;
 }
+
+.cards_text_container {
+  display: grid;
+  gap: 0.5rem;
+  place-items: center;
+}
+
+.cards_name {
+  font-size: 2rem;
+  text-transform: capitalize;
+  width: 100%;
+  text-align: center;
+}
+
+.cards_number {
+  color: #50ff5e;
+  margin-left: 1rem;
+}
+
+.cards_description {
+  text-align: center;
+  color: #ffffffb2;
+}
