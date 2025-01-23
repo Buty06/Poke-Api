@@ -1,9 +1,22 @@
 const search = document.getElementById("search_input");
 const form = document.getElementById("form");
+const exit_button = document.getElementById("exit_button");
 
-form.addEventListener("submit", () => {
-  event.preventDefault();
+const exit = () => {
+  exit_button.style.display = "block";
+
+  exit_button.addEventListener("click", () => {
+    mainContainer.innerHTML = "";
+    offset = 0
+    getPokemons();
+  });
+};
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
   const value = search.value.trim().toLowerCase();
+
+  exit();
 
   const singleCard = (img, name, number, description) => {
     //?Creando los elementos y agregandoles sus clases respectivas del Dom
