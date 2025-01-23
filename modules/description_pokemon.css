@@ -1,0 +1,14 @@
+.title,.logo{
+    cursor: pointer;
+}
+
+.logo_container{
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+
+h1 a{
+    text-decoration: none;
+    color: #fff;
+}

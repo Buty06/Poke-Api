@@ -8,6 +8,7 @@ const exit = () => {
   exit_button.addEventListener("click", () => {
     mainContainer.innerHTML = "";
     offset = 0
+    search.value = ''
     getPokemons();
   });
 };

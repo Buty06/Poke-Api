@@ -31,6 +31,11 @@ body {
   padding: 0 3rem;
 }
 
+.logo{
+  width: 4rem;
+  height: 70%;
+}
+
 .main {
   display: grid;
   grid-template-rows: 3rem 1fr;
@@ -172,4 +177,16 @@ body {
 .cards_description {
   text-align: center;
   color: #ffffffb2;
+}
+
+.link{
+  color: #50ff5e;
+  cursor: pointer;
+  transition: all .3s ease-in;
+  text-decoration: none;
+
+  &:hover{
+    color: #3caf43;
+    font-weight: 500;
+  }
 }
