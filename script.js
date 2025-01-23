@@ -45,6 +45,10 @@ const card = (img, name, number, description) => {
   card.appendChild(div);
   fragment.appendChild(card);
   mainContainer.appendChild(fragment);
+
+  form.addEventListener('submit', ()=>{
+    card.classList.add('display')
+  })
 };
 
 //*obtiene los datos de la ruta de 20 pokemones de la api
@@ -74,7 +78,7 @@ const getData = async () => {
 //*Variable para que no se repitan los valores
 let repeat;
 
-const getPokemon = async () => {
+const getPokemons = async () => {
   try {
     const data = await getData();
 
@@ -109,7 +113,7 @@ const getPokemon = async () => {
   }
 };
 
-getPokemon();
+getPokemons();
 
 //*Variable de estado para la ejecucion de la funcion en intervalos de tiempo
 let canExecute = true;
@@ -120,7 +124,7 @@ const render = () => {
     const totalHeight = document.documentElement.scrollHeight;
     if (scrollY + innerHeight >= totalHeight - 100) {
       getData();
-      getPokemon();
+      getPokemons();
 
       canExecute = false;
     }

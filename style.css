@@ -55,6 +55,13 @@ body {
 .search_image {
   height: 100%;
   width: 3rem;
+  color: #fff;
+}
+
+.submit{
+  background-color: transparent;
+  height: 100%;
+  cursor: pointer;
 }
 
 .search_input {
@@ -63,12 +70,12 @@ body {
   padding: 0.5rem;
   width: 100%;
   color: #fff;
-  text-align: center;
+  text-align: start;
   font-size: 1rem;
 
   &::placeholder {
     color: #fff;
-    text-align: center;
+    text-align: start;
     font-size: 1rem;
   }
 
@@ -99,8 +106,8 @@ body {
 
   &:hover {
     transform: scale(1.2);
-    background-color: rgb(10, 59, 78);
-    box-shadow: 0px 0px 10px 10px rgb(19, 106, 141);
+    background-color: rgb(14, 78, 104);
+    box-shadow: 0px 0px 10px 10px rgb(25, 139, 184);
     justify-self: center;
     align-self: center;
   }
@@ -134,4 +141,8 @@ body {
 .cards_description {
   text-align: center;
   color: #ffffffb2;
+}
+
+.display{
+  display: none;
 }

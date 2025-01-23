@@ -3,12 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Una pokedex de parte de Buty">
+    <meta name="description" content="Una pokedex de parte de Buty" />
 
-    <meta property="og:title" content="Poke-API">
-    <meta property="og:image" content="https://wallpapers.com/images/featured/pokemon-va6139eg5csznzmw.jpg">
-    <meta property="og:description" content="Una pokedex de parte de Buty">
-    
+    <meta property="og:title" content="Poke-API" />
+    <meta
+      property="og:image"
+      content="https://wallpapers.com/images/featured/pokemon-va6139eg5csznzmw.jpg"
+    />
+    <meta property="og:description" content="Una pokedex de parte de Buty" />
+
     <link rel="shortcut icon" href="./assets/icon.png" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -32,32 +35,36 @@
 
     <main class="main">
       <section class="search_filter">
-        <div class="search">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="512"
-            height="512"
-            viewBox="0 0 512 512"
-            class="search_image"
-          >
-            <path
-              fill="currentColor"
-              d="m479.6 399.716l-81.084-81.084l-62.368-25.767A175 175 0 0 0 368 192c0-97.047-78.953-176-176-176S16 94.953 16 192s78.953 176 176 176a175.03 175.03 0 0 0 101.619-32.377l25.7 62.2l81.081 81.088a56 56 0 1 0 79.2-79.195M48 192c0-79.4 64.6-144 144-144s144 64.6 144 144s-64.6 144-144 144S48 271.4 48 192m408.971 264.284a24.03 24.03 0 0 1-33.942 0l-76.572-76.572l-23.894-57.835l57.837 23.894l76.573 76.572a24.03 24.03 0 0 1-.002 33.941"
-            />
-          </svg>
+        <form class="search" id="form">
+          <button type="submit" class="submit">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="512"
+              height="512"
+              viewBox="0 0 512 512"
+              class="search_image"
+            >
+              <path
+                fill="currentColor"
+                d="m479.6 399.716l-81.084-81.084l-62.368-25.767A175 175 0 0 0 368 192c0-97.047-78.953-176-176-176S16 94.953 16 192s78.953 176 176 176a175.03 175.03 0 0 0 101.619-32.377l25.7 62.2l81.081 81.088a56 56 0 1 0 79.2-79.195M48 192c0-79.4 64.6-144 144-144s144 64.6 144 144s-64.6 144-144 144S48 271.4 48 192m408.971 264.284a24.03 24.03 0 0 1-33.942 0l-76.572-76.572l-23.894-57.835l57.837 23.894l76.573 76.572a24.03 24.03 0 0 1-.002 33.941"
+              />
+            </svg>
+          </button>
 
           <input
             type="text"
             id="search_input"
             class="search_input"
-            placeholder="Search your Pokemon"
+            required
+            placeholder="Busca tu Pokemon por su #"
           />
-        </div>
+        </form>
       </section>
 
       <section class="main_container" id="main_container"></section>
     </main>
 
     <script src="./script.js"></script>
+    <script src="./search.js"></script>
   </body>
 </html>
