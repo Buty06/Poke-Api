@@ -118,7 +118,7 @@ let canExecute = true;
 const render = () => {
   if (canExecute) {
     const totalHeight = document.documentElement.scrollHeight;
-    if (scrollY + innerHeight >= totalHeight) {
+    if (scrollY + innerHeight >= totalHeight - 100) {
       getData();
       getPokemon();
 
