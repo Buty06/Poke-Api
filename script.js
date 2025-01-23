@@ -29,7 +29,6 @@ const card = (img, name, number, description) => {
 
   const link = document.createElement("a");
   link.classList.add("link");
-  link.href = "./modules/description_pokemon.html";
 
   //?Creando el Fragment que ayuda a la renderizacion de elementos
   const fragment = document.createDocumentFragment();
@@ -53,7 +52,7 @@ const card = (img, name, number, description) => {
   mainContainer.appendChild(fragment);
 
   //*Evento que me da el pokemon seleccionado, es bueno
-  card.addEventListener("mouseover", async (e) => {
+  card.addEventListener("click", async (e) => {
     try {
       const response = await fetch(
         `https://pokeapi.co/api/v2/pokemon/${number}`
@@ -66,6 +65,8 @@ const card = (img, name, number, description) => {
       const data = await response.json();
       const formatData = await JSON.stringify(data);
       localStorage.setItem("pokemon", formatData);
+
+      link.href = "./modules/description_pokemon.html";
     } catch (error) {
       console.log(error);
     }

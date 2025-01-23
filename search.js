@@ -7,8 +7,8 @@ const exit = () => {
 
   exit_button.addEventListener("click", () => {
     mainContainer.innerHTML = "";
-    offset = 0
-    search.value = ''
+    offset = 0;
+    search.value = "";
     getPokemons();
   });
 };
@@ -43,6 +43,9 @@ form.addEventListener("submit", (e) => {
     const descripcion = document.createElement("p");
     descripcion.classList.add("cards_description");
 
+    const link = document.createElement("a");
+    link.classList.add("link");
+
     //?Creando el Fragment que ayuda a la renderizacion de elementos
     const fragment = document.createDocumentFragment();
 
@@ -51,16 +54,39 @@ form.addEventListener("submit", (e) => {
     title.textContent = name;
     numero.textContent = number;
     descripcion.textContent = description;
+    link.textContent = "Leer mas...";
 
     //?Agregando los elementos a el Dom
     title.appendChild(numero);
     figure.appendChild(image);
     div.appendChild(title);
     div.appendChild(descripcion);
+    div.appendChild(link);
     card.appendChild(figure);
     card.appendChild(div);
     fragment.appendChild(card);
     mainContainer.appendChild(fragment);
+
+    //*Evento que me da el pokemon seleccionado, es bueno
+  card.addEventListener("click", async (e) => {
+    try {
+      const response = await fetch(
+        `https://pokeapi.co/api/v2/pokemon/${number}`
+      );
+
+      if (!response) {
+        throw new Error("Error al obtener el pokemon");
+      }
+
+      const data = await response.json();
+      const formatData = await JSON.stringify(data);
+      localStorage.setItem("pokemon", formatData);
+
+      link.href = "./modules/description_pokemon.html";
+    } catch (error) {
+      console.log(error);
+    }
+  });
   };
 
   const getSingleData = async () => {
