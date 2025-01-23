@@ -4,7 +4,6 @@ const form = document.getElementById("form");
 form.addEventListener("submit", () => {
   event.preventDefault();
   const value = search.value.trim().toLowerCase();
-  console.log(value);
 
   const singleCard = (img, name, number, description) => {
     //?Creando los elementos y agregandoles sus clases respectivas del Dom
@@ -70,6 +69,7 @@ form.addEventListener("submit", () => {
 
   const getSinglePokemon = async () => {
     try {
+      mainContainer.innerHTML = "";
       const data = await getSingleData();
 
       //?Se obtienen los diferentes valores de los pokemones

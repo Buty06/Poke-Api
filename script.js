@@ -45,10 +45,6 @@ const card = (img, name, number, description) => {
   card.appendChild(div);
   fragment.appendChild(card);
   mainContainer.appendChild(fragment);
-
-  form.addEventListener('submit', ()=>{
-    card.classList.add('display')
-  })
 };
 
 //*obtiene los datos de la ruta de 20 pokemones de la api
@@ -122,7 +118,7 @@ let canExecute = true;
 const render = () => {
   if (canExecute) {
     const totalHeight = document.documentElement.scrollHeight;
-    if (scrollY + innerHeight >= totalHeight - 100) {
+    if (scrollY + innerHeight >= totalHeight - 20) {
       getData();
       getPokemons();
 
