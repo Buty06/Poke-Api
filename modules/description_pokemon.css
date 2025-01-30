@@ -1,14 +1,109 @@
-.title,.logo{
-    cursor: pointer;
+body {
+  gap: 0;
+  row-gap: 3rem;
+  width: 100%;
+  min-height: 100vh;
 }
 
-.logo_container{
-    height: 100%;
-    display: grid;
-    place-items: center;
+.title,
+.logo {
+  cursor: pointer;
 }
 
-h1 a{
-    text-decoration: none;
-    color: #fff;
+.logo_container {
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+h1 a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.description_main {
+  display: grid;
+  grid-template-rows: 25rem 1fr;
+  padding: 1rem;
+  overflow-y: scroll;
+  row-gap: 2rem;
+  place-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.figure {
+  width: 95%;
+  height: 95%;
+  background-color: #1d503f;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0px 0px 10px 10px #2b775e;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+}
+
+.buttons {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: -2rem;
+}
+
+.change_image {
+  background-color: #c1dcff;
+  width: 1.5rem;
+  height: 1.5rem;
+  align-self: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.5s ease-in;
+
+  &:hover {
+    background-color: #fff;
+  }
+}
+
+.description_text {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.name_number {
+  color: #ffffffe7;
+  text-transform: capitalize;
+  font-size: 3rem;
+  text-shadow: 2px 2px 5px #50ff5e;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.name_number span {
+  color: #50ff5e;
+  margin-left: 1rem;
+}
+
+.container {
+  width: 100%;
+  display: grid;
+  gap: .5rem;
+}
+
+.title {
+  font-size: 2rem;
+  color: #50ff5e;
+}
+
+.text{
+    font-size: 2rem;
+    padding-left: 1rem;
 }
