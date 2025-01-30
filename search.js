@@ -9,11 +9,13 @@ const exit = () => {
     mainContainer.innerHTML = "";
     offset = 0;
     search.value = "";
+    exit_button.style.display = "none";
     getPokemons();
   });
 };
 
 form.addEventListener("submit", (e) => {
+  mainContainer.innerHTML = "";
   e.preventDefault();
   const value = search.value.trim().toLowerCase();
 
@@ -68,25 +70,25 @@ form.addEventListener("submit", (e) => {
     mainContainer.appendChild(fragment);
 
     //*Evento que me da el pokemon seleccionado, es bueno
-  card.addEventListener("click", async (e) => {
-    try {
-      const response = await fetch(
-        `https://pokeapi.co/api/v2/pokemon/${number}`
-      );
+    card.addEventListener("click", async (e) => {
+      try {
+        const response = await fetch(
+          `https://pokeapi.co/api/v2/pokemon/${number}`
+        );
 
-      if (!response) {
-        throw new Error("Error al obtener el pokemon");
+        if (!response) {
+          throw new Error("Error al obtener el pokemon");
+        }
+
+        const data = await response.json();
+        const formatData = await JSON.stringify(data);
+        localStorage.setItem("pokemon", formatData);
+
+        link.href = "./modules/description_pokemon.html";
+      } catch (error) {
+        console.log(error);
       }
-
-      const data = await response.json();
-      const formatData = await JSON.stringify(data);
-      localStorage.setItem("pokemon", formatData);
-
-      link.href = "./modules/description_pokemon.html";
-    } catch (error) {
-      console.log(error);
-    }
-  });
+    });
   };
 
   const getSingleData = async () => {

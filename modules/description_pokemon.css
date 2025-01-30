@@ -95,15 +95,23 @@ h1 a {
 .container {
   width: 100%;
   display: grid;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 
 .title {
   font-size: 2rem;
   color: #50ff5e;
+  cursor: auto;
 }
 
-.text{
-    font-size: 2rem;
-    padding-left: 1rem;
+.text {
+  font-size: 2rem;
+  padding-left: 1rem;
+}
+
+.displace{
+    background-color: #2b775e;
+    width: 100%;
+    padding: .5rem;
+    border-radius: 10px;
 }
