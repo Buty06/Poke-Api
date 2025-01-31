@@ -56,7 +56,7 @@ const setExperience = () => {
 };
 setExperience();
 
-const animationDisplace = () => {
+const animationDisplace = (title, data) => {
   const displace = document.createElement("section");
   displace.classList.add("displace");
 
@@ -65,6 +65,7 @@ const animationDisplace = () => {
 
   const displaceTitle = document.createElement("h3");
   displaceTitle.classList.add("displace_title");
+  displaceTitle.textContent = title;
 
   const svg = `<svg
               xmlns="http://www.w3.org/2000/svg"
@@ -78,15 +79,13 @@ const animationDisplace = () => {
               />
             </svg>`;
 
-  const textContent = document.createElement("div");
-  textContent.textContent = `Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Voluptatem, sint, aliquam rerum minima harum voluptas, earum modi ea
-            dicta excepturi vero nulla. Quos neque excepturi voluptate sed
-            perferendis obcaecati cum!`;
+  const textContent = document.createElement("section");
+  textContent.appendChild(data)
+  textContent.style.display = "none";
+  textContent.classList.add('locationsContainer')
 
   const fragment = document.createDocumentFragment();
 
-  displaceTitle.textContent = "Ubicacion";
   displaceHeader.appendChild(displaceTitle);
   displaceHeader.insertAdjacentHTML("beforeend", svg);
   displace.appendChild(displaceHeader);
@@ -99,20 +98,54 @@ const animationDisplace = () => {
       displace.classList.remove("displace_open");
       displace.classList.add("displace_clouse");
 
+      setTimeout(() => {
+        textContent.style.display = "none";
+      }, 2000);
     } else if (displace.classList.contains("displace_clouse")) {
+      textContent.style.display = "grid";
       displace.classList.remove("displace_clouse");
       displace.classList.add("displace_open");
-
-    } else{
-        displace.classList.add('displace_open')
+    } else {
+      textContent.style.display = "grid";
+      displace.classList.add("displace_open");
     }
   });
 };
-animationDisplace();
 
 const setLocation = async () => {
   const response = await fetch(parsePokemon.location_area_encounters);
   const data = await response.json();
-  console.log(data);
+
+  const fragment = document.createDocumentFragment();
+
+  data.forEach((element) => {
+    const areaName = element.location_area.name;
+    const versionDetails = element.version_details;
+    let versionName = "";
+    let location;
+
+    versionDetails.forEach((ver) => {
+      versionName += `${ver.version.name}, `;
+    });
+
+    const rute = document.createElement("p");
+    rute.classList.add("rute");
+    rute.textContent = `Ruta: ${areaName}`;
+
+    const version = document.createElement("p");
+    version.classList.add("version");
+    version.textContent = `Version: ${versionName.slice(0, -2)}`;
+
+    const locationContainer = document.createElement("div");
+    locationContainer.classList.add("location");
+
+    locationContainer.appendChild(rute);
+    locationContainer.appendChild(version);
+    fragment.appendChild(locationContainer);
+  });
+
+  if (data.length !== 0) {
+    animationDisplace("Ubicacion", fragment);
+  }
 };
 setLocation();

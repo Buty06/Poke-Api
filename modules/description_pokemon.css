@@ -130,12 +130,38 @@ h1 a {
   height: 3rem;
 }
 
-.displace_open{
-    animation: displaceOpen 2s forwards;
+.displace_open {
+  animation: displaceOpen 2s forwards;
 }
 
-.displace_clouse{
-    animation: displaceClouse 2s forwards;
+.displace_clouse {
+  animation: displaceClouse 2s forwards;
+}
+
+.locationsContainer {
+  display: grid;
+  gap: 1rem;
+}
+
+.location {
+  background-color: #3faa87;
+  color: #fff;
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+  border-radius: 10px;
+  
+  &:nth-child(even) {
+    background-color: #1d503f;
+    color: #fff;
+  }
+}
+
+.displace_header svg{
+    background-color: #1d503f;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
 }
 
 @keyframes displaceOpen {
@@ -149,11 +175,11 @@ h1 a {
 }
 
 @keyframes displaceClouse {
-    from{
-        height: 100%;
-    }
+  from {
+    height: 100%;
+  }
 
-    to{
-        height: 3rem;
-    }
+  to {
+    height: 3rem;
+  }
 }

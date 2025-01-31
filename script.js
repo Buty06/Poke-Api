@@ -52,7 +52,7 @@ const card = (img, name, number, description) => {
   mainContainer.appendChild(fragment);
 
   //*Evento que me da el pokemon seleccionado, es bueno
-  card.addEventListener("click", async (e) => {
+  card.addEventListener("mouseover", async (e) => {
     try {
       const response = await fetch(
         `https://pokeapi.co/api/v2/pokemon/${number}`
