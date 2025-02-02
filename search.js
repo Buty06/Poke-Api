@@ -1,7 +1,6 @@
 const search = document.getElementById("search_input");
 const form = document.getElementById("form");
 const exit_button = document.getElementById("exit_button");
-const main = document.getElementById('main')
 
 const exit = () => {
   exit_button.style.display = "block";
@@ -17,7 +16,6 @@ const exit = () => {
 
 form.addEventListener("submit", (e) => {
   mainContainer.innerHTML = "";
-  main.style.overflowY = 'hidden'
   e.preventDefault();
   const value = search.value.trim().toLowerCase();
 

@@ -7,6 +7,7 @@ const cardName = document.getElementById("name");
 const typeText = document.getElementById("type_text");
 const weight = document.getElementById("weight");
 const baseExperience = document.getElementById("base_experience");
+const statContainer = document.getElementById('stats_container')
 console.log(parsePokemon);
 
 const changeImage = () => {
@@ -55,6 +56,33 @@ const setExperience = () => {
   baseExperience.textContent = `${parsePokemon.base_experience}xp`;
 };
 setExperience();
+
+const setStats = ()=>{
+  const stats = parsePokemon.stats
+  const fragment = document.createDocumentFragment()
+  console.log(stats);
+  
+  stats.forEach(element => {
+    const name = document.createElement('h3')
+    name.textContent = `${element.stat.name.toUpperCase()} :`
+    name.classList.add('stat_title')
+
+    const value = document.createElement('p')
+    value.textContent = element.base_stat
+    value.classList.add('stat_value')
+
+    const div = document.createElement('div')
+    div.classList.add('stat')
+
+    div.appendChild(name)
+    div.appendChild(value)
+
+    fragment.appendChild(div)
+  });
+
+  statContainer.appendChild(fragment)
+}
+setStats()
 
 const animationDisplace = (title, data) => {
   const displace = document.createElement("section");

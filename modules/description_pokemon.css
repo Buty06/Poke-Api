@@ -191,3 +191,41 @@ h1 a {
     height: 3rem;
   }
 }
+
+.stats_container{
+  width: 100%;
+  display: grid;
+  gap: 1rem;
+  background-color: #2d7a61;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.stats_title{
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.stats{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: .5rem;
+}
+
+.stat{
+  display: grid;
+  gap: .2rem;
+  background-color: #1d503f;
+  padding: .5rem;
+  border-radius: 10px;
+}
+
+.stat_title{
+  font-size: 1.5rem;
+}
+
+.stat_value{
+  font-size: 1.5rem;
+  margin-left: 1rem;
+}
