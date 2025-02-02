@@ -97,9 +97,6 @@ const getData = async () => {
 
 //*Obtiene los datos para luego ser renderizados utilizando los pokemones anteriores
 
-//*Variable para que no se repitan los valores
-let repeat;
-
 const getPokemons = async () => {
   try {
     const data = await getData();
@@ -109,26 +106,23 @@ const getPokemons = async () => {
       const pokemon = await fetch(element.url);
       const pokemonJson = await pokemon.json();
 
-      if (repeat !== pokemonJson.id) {
-        //?Se obtienen los diferentes valores de los pokemones
-        const numero = pokemonJson.id;
-        const name = pokemonJson.name;
-        const image = pokemonJson.sprites.front_default;
+      //?Se obtienen los diferentes valores de los pokemones
+      const numero = pokemonJson.id;
+      const name = pokemonJson.name;
+      const image = pokemonJson.sprites.front_default;
 
-        //?Se obtiene la descripcion de la especie del pokemon
-        const species = await fetch(pokemonJson.species.url);
-        const speciesJson = await species.json();
+      //?Se obtiene la descripcion de la especie del pokemon
+      const species = await fetch(pokemonJson.species.url);
+      const speciesJson = await species.json();
 
-        //?se obtiene la descripcion de los pokemones
-        const entries = speciesJson.flavor_text_entries;
-        const descripcion = entries.find(
-          (entry) => entry.language.name === "es"
-        ).flavor_text;
+      //?se obtiene la descripcion de los pokemones
+      const entries = speciesJson.flavor_text_entries;
+      
+      const descripcion = entries.find(
+        (entry) => entry.language.name === "es"
+      ).flavor_text;
 
-        card(image, name, numero, descripcion);
-      }
-
-      repeat = pokemonJson.id;
+      await card(image, name, numero, descripcion);
     }
   } catch (error) {
     console.error(error);
@@ -137,23 +131,11 @@ const getPokemons = async () => {
 
 getPokemons();
 
-//*Variable de estado para la ejecucion de la funcion en intervalos de tiempo
-let canExecute = true;
-
 //! Esta funsion ayuda para que le de un margen de tiempo a la extraccion de datos en el Dom
 const render = () => {
-  if (canExecute) {
-    const totalHeight = document.documentElement.scrollHeight;
-    if (scrollY + innerHeight >= totalHeight) {
-      getData();
-      getPokemons();
-
-      canExecute = false;
-    }
-
-    setTimeout(() => {
-      canExecute = true;
-    }, 3000);
+  const totalHeight = document.documentElement.scrollHeight;
+  if (scrollY + innerHeight >= totalHeight) {
+    getPokemons();
   }
 };
 

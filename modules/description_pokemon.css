@@ -109,6 +109,13 @@ h1 a {
   padding-left: 1rem;
 }
 
+.type_weight_container {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
 .displace {
   background-color: #2b775e;
   width: 100%;
@@ -150,18 +157,19 @@ h1 a {
   display: grid;
   gap: 1rem;
   border-radius: 10px;
-  
+
   &:nth-child(even) {
     background-color: #1d503f;
     color: #fff;
   }
 }
 
-.displace_header svg{
-    background-color: #1d503f;
-    width: 2rem;
-    height: 2rem;
-    cursor: pointer;
+.displace_header svg {
+  background-color: #1d503f;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 @keyframes displaceOpen {
