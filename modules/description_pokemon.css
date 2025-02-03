@@ -243,3 +243,35 @@ h1 a {
   font-size: 1.5rem;
   margin-left: 1rem;
 }
+
+@view-transition {
+  navigation: auto;
+}
+
+@keyframes MoveIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes MoveOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+::view-transition-new(root) {
+  animation: 1s ease-in both MoveIn;
+}
+
+::view-transition-old(root) {
+  animation: 1s ease-in both MoveOut;
+}
