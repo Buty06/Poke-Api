@@ -1,3 +1,35 @@
+@view-transition {
+  navigation: auto;
+}
+
+@keyframes MoveIn {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes MoveOut {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+::view-transition-new(root) {
+  animation: 0.5s ease-in both MoveIn;
+}
+
+::view-transition-old(root) {
+  animation: 0.5s ease-in both MoveOut;
+}
+
 body {
   gap: 0;
   row-gap: 3rem;
@@ -242,36 +274,4 @@ h1 a {
 .stat_value {
   font-size: 1.5rem;
   margin-left: 1rem;
-}
-
-@view-transition {
-  navigation: auto;
-}
-
-@keyframes MoveIn {
-  from {
-    transform: translateX(100%);
-  }
-
-  to {
-    transform: translateX(0);
-  }
-}
-
-@keyframes MoveOut {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-100%);
-  }
-}
-
-::view-transition-new(root) {
-  animation: .5s ease-in both MoveIn;
-}
-
-::view-transition-old(root) {
-  animation: .5s ease-in both MoveOut;
 }

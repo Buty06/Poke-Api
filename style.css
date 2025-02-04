@@ -1,3 +1,35 @@
+@view-transition {
+  navigation: auto;
+}
+
+@keyframes MoveIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes MoveOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+::view-transition-new(root) {
+  animation: 0.5s ease-in both MoveIn;
+}
+
+::view-transition-old(root) {
+  animation: 0.5s ease-in both MoveOut;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -31,7 +63,7 @@ body {
   padding: 0 3rem;
 }
 
-.logo{
+.logo {
   width: 4rem;
   height: 70%;
 }
@@ -47,7 +79,7 @@ body {
   position: relative;
 }
 
-.search_filter{
+.search_filter {
   display: flex;
   gap: 1rem;
   position: sticky;
@@ -55,7 +87,7 @@ body {
   top: 0rem;
 }
 
-.exit_button{
+.exit_button {
   background-color: rgb(8, 47, 63);
   color: #fff;
   width: 3rem;
@@ -64,12 +96,12 @@ body {
   transition: all 0.3s ease-in;
   display: none;
 
-  &:hover{
+  &:hover {
     background-color: rgb(14, 78, 104);
   }
 }
 
-.exit_button svg{
+.exit_button svg {
   width: 80%;
   height: 80%;
 }
@@ -93,7 +125,7 @@ body {
   color: #fff;
 }
 
-.submit{
+.submit {
   background-color: transparent;
   height: 100%;
   cursor: pointer;
@@ -179,46 +211,14 @@ body {
   color: #ffffffb2;
 }
 
-.link{
+.link {
   color: #50ff5e;
   cursor: pointer;
-  transition: all .3s ease-in;
+  transition: all 0.3s ease-in;
   text-decoration: none;
 
-  &:hover{
+  &:hover {
     color: #3caf43;
     font-weight: 500;
   }
-}
-
-@view-transition {
-  navigation: auto;
-}
-
-@keyframes MoveIn {
-  from{
-    opacity: 0;
-  }
-
-  to{
-    opacity: 1;
-  }
-}
-
-@keyframes MoveOut {
-  from{
-    opacity: 1;
-  }
-
-  to{
-    opacity: 0;
-  }
-}
-
-::view-transition-new(root){
-  animation: .5s ease-in both MoveIn;
-}
-
-::view-transition-old(root){
-  animation: .5s ease-in both MoveOut;
 }
