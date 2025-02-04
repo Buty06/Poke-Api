@@ -250,28 +250,28 @@ h1 a {
 
 @keyframes MoveIn {
   from {
-    opacity: 0;
+    transform: translateX(100%);
   }
 
   to {
-    opacity: 1;
+    transform: translateX(0);
   }
 }
 
 @keyframes MoveOut {
   from {
-    opacity: 1;
+    transform: translateX(0);
   }
 
   to {
-    opacity: 0;
+    transform: translateX(-100%);
   }
 }
 
 ::view-transition-new(root) {
-  animation: 1s ease-in both MoveIn;
+  animation: .5s ease-in both MoveIn;
 }
 
 ::view-transition-old(root) {
-  animation: 1s ease-in both MoveOut;
+  animation: .5s ease-in both MoveOut;
 }
